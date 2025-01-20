@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Tea</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="name">Tea Name</label>
+        <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" name="price" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" class="form-control" name="category">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Tea</button>
+</form>
+{% endblock %}

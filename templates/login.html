@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container bg-white h-100">
+    <h2 class="section-title">Login Form</h2>
+
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {{ errors[0] }}
+    </div>
+    {% endfor %}
+
+    <form method="POST" class="col-md-8">
+        {{ form.hidden_tag() }}
+
+        <label class="form-label">Username:</label>
+        <div class="col-md-8">
+            {{ form.username(class="form-control my-2", placeholder=form.username.label.text) }}
+        </div>
+
+        <label class="form-label">Email:</label>
+        <div class="col-md-8">
+            {{ form.email(class="form-control my-2", placeholder=form.email.label.text) }}
+        </div>
+
+        <label class="form-label">Password:</label>
+        <div class="input-group col-md-8 ">
+            {{ form.password(class="form-control", id="password", placeholder=form.password.label.text) }}
+            <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('password')">
+                <img src="./static/images/eye.jpg" alt="Show Password" style="width: 20px; height: 20px;">
+            </button>
+        </div>
+
+        <div class="col-md-8">
+            {{ form.login(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <script>
+        function togglePassword(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+    </script>
+</div>
+{% endblock %}
